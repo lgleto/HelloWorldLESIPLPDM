@@ -7,31 +7,19 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
-
-    lateinit var  textViewHelloWorld : TextView
+class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
-        textViewHelloWorld = TextView(this)
-        textViewHelloWorld.text = "Hello World!"
+        val textViewHelloWorld = findViewById<TextView>(R.id.textViewHelloWorld)
+        val buttonTranslate = findViewById<Button>(R.id.buttonTranslate)
 
-        val buttonTranslate = Button(this)
-        buttonTranslate.text = "Traduzir"
-        buttonTranslate.setOnClickListener(this)
-
-        val linearLayout = LinearLayout(this)
-        linearLayout.addView(textViewHelloWorld)
-        linearLayout.addView(buttonTranslate)
-        linearLayout.orientation = LinearLayout.VERTICAL
-
-        setContentView(linearLayout)
+        buttonTranslate.setOnClickListener {
+            textViewHelloWorld.text = "Olá mundo!"
+        }
 
     }
 
-    override fun onClick(p0: View?) {
-        textViewHelloWorld.text = "Olá Mundo!"
-    }
 }
